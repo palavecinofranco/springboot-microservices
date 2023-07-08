@@ -1,0 +1,53 @@
+version: '3'
+services:
+  db-inventory:
+    container_name: db_inventory
+    image: mysql:8.0.33
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: ms_inventory
+      MYSQL_USER: root
+      MYSQL_PASSWORD: root
+      MYSQL_ROOT_PASSWORD: root123
+    ports:
+      - 3310:3310
+    expose:
+      - 3310
+    networks:
+      - mynetwork
+
+  db-orders:
+    container_name: db_orders
+    image: mysql:8.0.33
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: ms_orders
+      MYSQL_USER: root
+      MYSQL_PASSWORD: root
+      MYSQL_ROOT_PASSWORD: root123
+    ports:
+      - 3308:3308
+    expose:
+      - 3308
+    networks:
+      - mynetwork
+
+  db-products:
+    container_name: db_products
+    image: mysql:8.0.33
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: ms_products
+      MYSQL_USER: root
+      MYSQL_PASSWORD: root
+      MYSQL_ROOT_PASSWORD: root123
+    ports:
+      - 3309:3309
+    expose:
+      - 3309
+    networks:
+      - mynetwork
+
+networks:
+  mynetwork:
+    driver: bridge
