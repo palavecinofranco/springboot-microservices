@@ -1,8 +1,8 @@
 version: '3'
 services:
   ### Postgres database for Inventory
-  db-inventory:
-    container_name: db-inventory
+  db-inventory1:
+    container_name: db-inventory1
     image: postgres:15.2
     restart: unless-stopped
     environment:
@@ -16,22 +16,23 @@ services:
     command: -p 5431
 
   ### MySQL database for Orders
-  db-orders:
-    container_name: db-orders
+  db-orders1:
+    container_name: db-orders1
     image: mysql:8.0.33
     restart: unless-stopped
     environment:
       MYSQL_DATABASE: ms_orders
-      MYSQL_USER: root
+      MYSQL_USER: test
       MYSQL_PASSWORD: root
+      MYSQL_ROOT_PASSWORD: root123
     ports:
       - 3306:3306
     expose:
       - 3306
 
   ### Postgres database for Products
-  db-products:
-    container_name: db-products
+  db-products1:
+    container_name: db-products1
     image: postgres:15.2
     restart: unless-stopped
     environment:
@@ -60,8 +61,8 @@ services:
     command: -p 5433
 
   ### Keycloak
-  keycloak:
-    container_name: keycloak
+  keycloak1:
+    container_name: keycloak1
     image: quay.io/keycloak/keycloak:21.0.2
     command: ["start-dev"]
     ports:
